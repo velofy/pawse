@@ -1,12 +1,12 @@
 # Pawse 🐕
 
-**The golden retriever that makes you take breaks.**
+**The pomeranian that makes you take breaks.**
 
-Every so often (you decide when), a friendly golden retriever takes over your
+Every so often (you decide when), a fluffy pomeranian takes over your
 screen, tells you to take a walk and drink some water, counts down 30 seconds,
 asks if you're happy, and leaves. That's it. That's the app.
 
-The dog is **real**, actual retriever footage (CC-BY, see [ASSETS.md](ASSETS.md))
+The dog is **real**, actual pomeranian footage (CC-BY, see [ASSETS.md](ASSETS.md))
 with the background matted out, played as transparent video. Prefer the built-in
 procedural **3D dog** instead? One toggle in Settings. Want *your own dog* on
 screen? See [Put your own dog in Pawse](#put-your-own-dog-in-pawse).
@@ -54,7 +54,7 @@ Open **Settings** from the tray icon:
 | Setting | Default | Meaning |
 |---|---|---|
 | Break every | 45 min | Interval between breaks |
-| Fixed times |, | e.g. `10:30`, `15:00`, when set, these replace the interval |
+| Fixed times | (none) | e.g. `10:30`, `15:00`, when set, these replace the interval |
 | Break length | 30 s | The countdown |
 | Messages | 3 built-ins | One per line; the dog rotates through them |
 | Emergency escape | on | Hold ESC to skip; turn off for hard mode |
@@ -85,7 +85,7 @@ produces the macOS universal DMG and the Windows NSIS installer as a draft relea
 
 The real-dog engine plays three packed-alpha clips: `idle.mp4` (loops during the
 break), `happy.mp4` (you said yes), `sad.mp4` (you said not really). Pawse looks for
-them first in your config dir, so you can replace the bundled retriever with your dog:
+them first in your config dir, so you can replace the bundled pomeranian with your dog:
 
 1. Film your dog against a plainish background (1080p; a calm sitting take, an
    excited take, a head-tilt take).
@@ -101,7 +101,7 @@ in both the macOS and Windows webviews.
 
 ## The 3D dog
 
-The fallback/alternative retriever is built procedurally from three.js primitives
+The fallback/alternative dog is built procedurally from three.js primitives
 (`ui/dog.js`), spheres, capsules, and a chained-segment tail. No model files, and
 every part of the dog (coat color, wag speed, ear droop, blink timing) is one line
 of code away from being yours.

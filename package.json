@@ -1,8 +1,8 @@
 {
   "name": "pawse",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "private": true,
-  "description": "A golden retriever that makes you take breaks. Lightweight, open source, no network access.",
+  "description": "A pomeranian that makes you take breaks. Lightweight, open source, no network access.",
   "scripts": {
     "tauri": "tauri",
     "dev": "tauri dev",

@@ -191,14 +191,27 @@ body.no-cursor { cursor: none; }
   height: 56vh;
   opacity: 0;
   transform: translateX(-50%) translateY(24px);
+  transform-origin: 50% 100%;
   transition: opacity 0.9s ease, transform 0.9s ease;
   filter: drop-shadow(0 18px 40px rgba(0, 0, 0, 0.55));
-  /* the clip is a head-and-chest portrait; fade the cut edges out softly */
-  -webkit-mask-image: linear-gradient(to bottom, black 82%, transparent 99%);
-  mask-image: linear-gradient(to bottom, black 82%, transparent 99%);
+  /* the clip is a full-body sitting portrait; fade the cut edges out softly */
+  -webkit-mask-image: linear-gradient(to bottom, black 90%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 90%, transparent 100%);
 }
-#scene.video-dog.dog-in { opacity: 1; transform: translateX(-50%) translateY(0); }
-#scene.video-dog.dog-out { opacity: 0; }
+/* after sliding in, a gentle bob keeps the dog feeling alive */
+#scene.video-dog.dog-in {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+  animation: appdogbob 2.8s ease-in-out 0.9s infinite;
+}
+@keyframes appdogbob {
+  0%, 100% { transform: translateX(-50%) translateY(0) rotate(-0.5deg); }
+  50% { transform: translateX(-50%) translateY(-1.4%) rotate(0.5deg); }
+}
+#scene.video-dog.dog-out { opacity: 0; animation: none; }
+@media (prefers-reduced-motion: reduce) {
+  #scene.video-dog.dog-in { animation: none; }
+}
 
 .heart {
   position: fixed;

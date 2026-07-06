@@ -390,7 +390,6 @@ fn get_dog_clips(app: AppHandle) -> Option<serde_json::Value> {
     } else {
         bundled.filter(|b| names.iter().all(|n| b.join(n).exists()))
     };
-    eprintln!("pawse: dog clips dir -> {dir:?}");
     dir.map(|d| {
         serde_json::json!({
             "idle": d.join("idle.mp4").to_string_lossy(),

@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Pawse, the golden retriever that makes you take breaks</title>
-<meta name="description" content="A tiny open-source app for macOS and Windows. Every so often a real golden retriever blocks your screen, tells you to walk and drink water, asks if you are happy, and leaves.">
+<title>Pawse, the pomeranian that makes you take breaks</title>
+<meta name="description" content="A tiny open-source app for macOS and Windows. Every so often a real pomeranian blocks your screen, tells you to walk and drink water, asks if you are happy, and leaves.">
 <style>
   :root {
     --night: #171310;
@@ -73,23 +73,28 @@
   }
   .break.on { opacity: 1; pointer-events: auto; }
   .dogbox {
-    position: absolute; left: 50%; bottom: -4%;
-    height: 62%; aspect-ratio: 1266 / 900;
+    position: absolute; left: 50%; bottom: -3%;
+    height: 74%; aspect-ratio: 900 / 944;
     transform: translateX(-50%) translateY(30px); opacity: 0;
     transition: opacity 0.9s ease, transform 0.9s ease;
     filter: drop-shadow(0 14px 30px rgba(0,0,0,0.55));
-    -webkit-mask-image: linear-gradient(to bottom, #000 82%, transparent 99%);
-    mask-image: linear-gradient(to bottom, #000 82%, transparent 99%);
+    -webkit-mask-image: linear-gradient(to bottom, #000 90%, transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 90%, transparent 100%);
   }
   .break.on .dogbox { opacity: 1; transform: translateX(-50%) translateY(0); }
-  .dogbox canvas, .dogbox .fallback { width: 100%; height: 100%; }
+  .break.on .dogbox canvas { animation: dogbob 2.6s ease-in-out infinite; }
+  @keyframes dogbob {
+    0%, 100% { transform: translateY(0) rotate(-0.4deg); }
+    50% { transform: translateY(-1.6%) rotate(0.4deg); }
+  }
+  .dogbox canvas, .dogbox .fallback { width: 100%; height: 100%; transform-origin: 50% 100%; }
   .dogbox .fallback { display: none; font-size: 20vmin; text-align: center; }
   .bubble {
-    position: absolute; left: 53%; bottom: 66%;
-    max-width: min(46%, 380px); padding: 14px 18px 12px;
+    position: absolute; left: 55%; bottom: 66%;
+    max-width: min(38%, 300px); padding: 11px 14px 10px;
     background: rgba(15, 17, 24, 0.92);
     border: 1px solid rgba(224, 169, 78, 0.42);
-    border-radius: 16px;
+    border-radius: 14px;
     opacity: 0; transform: translateY(10px) scale(0.94);
     transition: opacity 0.45s ease 0.5s, transform 0.45s ease 0.5s;
   }
@@ -102,16 +107,16 @@
   .bubble::before { width: 8px; height: 8px; left: 8px; bottom: -38px; }
   .bubble h2 {
     font-family: var(--serif); font-weight: 500;
-    font-size: clamp(13px, 1.9vw, 21px); line-height: 1.35; min-height: 2.7em;
+    font-size: clamp(12px, 1.5vw, 17px); line-height: 1.32; min-height: 2.6em;
   }
-  .bubble .row { display: flex; align-items: center; gap: 14px; margin-top: 8px; }
-  .ring { position: relative; width: 56px; height: 56px; flex: none; }
+  .bubble .row { display: flex; align-items: center; gap: 11px; margin-top: 7px; }
+  .ring { position: relative; width: 46px; height: 46px; flex: none; }
   .ring svg { transform: rotate(-90deg); display: block; }
   .ring circle { fill: none; stroke-width: 6; stroke-linecap: round; }
   .ring .bg { stroke: rgba(243,234,217,0.14); }
   .ring .fg { stroke: var(--gold); stroke-dasharray: 276.46; }
-  .ring b { position: absolute; inset: 0; display: grid; place-items: center; font-size: 16px; }
-  .walkline { font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: #c9a86a; }
+  .ring b { position: absolute; inset: 0; display: grid; place-items: center; font-size: 14px; }
+  .walkline { font-size: 9px; letter-spacing: 0.26em; text-transform: uppercase; color: #c9a86a; }
   .ask { display: none; gap: 8px; }
   .ask button {
     font: inherit; font-size: clamp(11px, 1.4vw, 14px); padding: 7px 14px; border-radius: 999px;
@@ -244,7 +249,7 @@
           <h2 id="line"></h2>
           <div class="row">
             <div class="ring" id="ringbox">
-              <svg viewBox="0 0 100 100" width="56" height="56">
+              <svg viewBox="0 0 100 100" width="46" height="46">
                 <circle class="bg" cx="50" cy="50" r="44"/>
                 <circle class="fg" id="ringfg" cx="50" cy="50" r="44"/>
               </svg>
@@ -263,7 +268,7 @@
   </section>
 
   <section class="head">
-    <h1>A golden retriever that <em>makes</em> you take breaks.</h1>
+    <h1>A pomeranian that <em>makes</em> you take breaks.</h1>
     <p>Pawse sits in your menu bar and counts. Every 45 minutes, or whenever you say,
        a real dog blocks every screen for 30 seconds, tells you to walk and drink water,
        asks if you are happy, and leaves. You cannot argue with him. You can hold ESC.</p>
@@ -284,7 +289,7 @@
     <h2 class="sect-title">How a break goes</h2>
     <div class="beatgrid">
       <div class="beat"><div class="n">1</div><h3>He arrives</h3>
-        <p>Your screens dim behind a translucent layer. A retriever fades in, sits, and pants at you. Your keyboard stops mattering.</p></div>
+        <p>Your screens dim behind a translucent layer. A pomeranian fades in, sits, and stares at you. Your keyboard stops mattering.</p></div>
       <div class="beat"><div class="n">2</div><h3>Thirty seconds</h3>
         <p>The thought bubble says what he thinks: walk, water, breathe. A gold ring counts down. That is the whole job.</p></div>
       <div class="beat"><div class="n">3</div><h3>One question</h3>
@@ -332,7 +337,7 @@ Pawse_x.y.z_x64-setup.exe</pre>
 <footer>
   <div class="wrap">
     <span>MIT license. No telemetry, no accounts, no network. Just a dog.</span>
-    <span>Dog footage <a href="https://www.youtube.com/watch?v=HeWxFLFqQ2c">CC-BY CurioWorld</a>, rehomed with love.
+    <span>Dog footage <a href="https://www.youtube.com/watch?v=EqsuyFGD_dw">CC-BY Free Stock Footage</a>, rehomed with love.
       <a href="https://github.com/anishfyi/pawse">github.com/anishfyi/pawse</a></span>
   </div>
 </footer>

@@ -4,12 +4,13 @@
 
 `idle.mp4`, `happy.mp4`, `sad.mp4` are derived from:
 
-- **Source video:** "Golden Retriever | Dog Breeds | Pet | HD no copyright video"
-  by **CurioWorld**, https://www.youtube.com/watch?v=HeWxFLFqQ2c
+- **Source video:** "4K Free Stock Footage – Cute Fluffy Pomeranian Spitz Sitting
+  Indoors | Adorable Pet Dog B-Roll" by **Free Stock Footage**,
+  https://www.youtube.com/watch?v=EqsuyFGD_dw
 - **License:** Creative Commons Attribution (CC BY), as declared on YouTube.
-- **Modifications:** cropped to the studio segment (~46.5s–58.0s), background
-  removed with rembg (ISNet), repacked as packed-alpha H.264 (color left,
-  alpha matte right), split into three behavior clips.
+- **Modifications:** cropped tight around the dog, background removed with rembg
+  (ISNet), repacked as packed-alpha H.264 (color left, alpha matte right), split
+  into three behavior segments (calm sit, alert, head-down).
 
 The pipeline that produced them is `scripts/matte.py` + `scripts/pack-clips.sh`.
 

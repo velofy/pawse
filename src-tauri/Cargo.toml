@@ -1,7 +1,7 @@
 [package]
 name = "pawse"
-version = "0.2.0"
-description = "A golden retriever that makes you take breaks."
+version = "0.2.1"
+description = "A pomeranian that makes you take breaks."
 authors = ["Anish"]
 license = "MIT"
 edition = "2021"
