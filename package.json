@@ -1,0 +1,16 @@
+{
+  "name": "pawse",
+  "version": "0.2.0",
+  "private": true,
+  "description": "A golden retriever that makes you take breaks. Lightweight, open source, no network access.",
+  "scripts": {
+    "tauri": "tauri",
+    "dev": "tauri dev",
+    "build": "tauri build",
+    "sync-vendor": "cp node_modules/three/build/three.module.min.js ui/vendor/three.module.min.js"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2",
+    "three": "^0.166.0"
+  }
+}

@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pawse</title>
+  <link rel="stylesheet" href="break.css" />
+</head>
+<body class="no-cursor">
+  <canvas id="scene"></canvas>
+
+  <main id="ui">
+    <div id="bubble">
+      <h1 id="msg" aria-live="polite"></h1>
+      <p id="sub">walk · water · breathe</p>
+
+      <div id="bubble-row">
+        <div id="ringwrap" class="hidden" aria-hidden="true">
+          <svg viewBox="0 0 100 100" width="86" height="86">
+            <circle class="ring-bg" cx="50" cy="50" r="44" />
+            <circle id="ringfg" class="ring-fg" cx="50" cy="50" r="44" />
+          </svg>
+          <div id="count">30</div>
+        </div>
+
+        <div id="ask" class="hidden">
+          <button id="btn-happy" type="button">🐾 Yes!</button>
+          <button id="btn-meh" type="button">😔 Not really</button>
+          <p class="hint">or press <kbd>Y</kbd> / <kbd>N</kbd></p>
+        </div>
+      </div>
+
+      <span class="dot dot-big"></span>
+      <span class="dot dot-small"></span>
+    </div>
+  </main>
+
+  <div id="skip-pill" class="hidden">
+    keep holding <kbd>esc</kbd> to skip
+    <div id="skip-bar"><div id="skip-fill"></div></div>
+  </div>
+
+  <script type="module" src="break.js"></script>
+</body>
+</html>
