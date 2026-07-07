@@ -247,7 +247,7 @@ fn open_settings(app: &AppHandle) {
         return;
     }
     let _ = WebviewWindowBuilder::new(app, "settings", WebviewUrl::App("settings.html".into()))
-        .title("Pawse")
+        .title("Pawse Control Panel")
         .inner_size(820.0, 700.0)
         .min_inner_size(640.0, 560.0)
         .build();
@@ -464,7 +464,7 @@ fn main() {
                     &MenuItem::with_id(app, "pause_1h", "Pause for 1 hour", true, None::<&str>)?,
                     &MenuItem::with_id(app, "resume", "Resume breaks", true, None::<&str>)?,
                     &PredefinedMenuItem::separator(app)?,
-                    &MenuItem::with_id(app, "settings", "Settings…", true, None::<&str>)?,
+                    &MenuItem::with_id(app, "settings", "Open Control Panel", true, None::<&str>)?,
                     &MenuItem::with_id(app, "quit", "Quit Pawse", true, None::<&str>)?,
                 ],
             )?;
@@ -496,9 +496,10 @@ fn main() {
 
             reschedule(&handle);
             spawn_scheduler(handle.clone());
-            if first_run {
-                open_settings(&handle);
-            }
+            // Show the Control Panel on launch so it is always reachable; the app
+            // otherwise lives only in the menu bar and feels like it has no window.
+            let _ = first_run;
+            open_settings(&handle);
             Ok(())
         })
         .build(tauri::generate_context!())

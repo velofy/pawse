@@ -195,20 +195,8 @@ body.no-cursor { cursor: none; }
   transition: opacity 0.9s ease, transform 0.9s ease;
   filter: drop-shadow(0 18px 40px rgba(0, 0, 0, 0.55));
 }
-/* after sliding in, a gentle bob keeps the dog feeling alive */
-#scene.video-dog.dog-in {
-  opacity: 1;
-  transform: translateX(-50%) translateY(0);
-  animation: appdogbob 2.8s ease-in-out 0.9s infinite;
-}
-@keyframes appdogbob {
-  0%, 100% { transform: translateX(-50%) translateY(0) rotate(-0.5deg); }
-  50% { transform: translateX(-50%) translateY(-1.4%) rotate(0.5deg); }
-}
-#scene.video-dog.dog-out { opacity: 0; animation: none; }
-@media (prefers-reduced-motion: reduce) {
-  #scene.video-dog.dog-in { animation: none; }
-}
+#scene.video-dog.dog-in { opacity: 1; transform: translateX(-50%) translateY(0); }
+#scene.video-dog.dog-out { opacity: 0; }
 
 .heart {
   position: fixed;
