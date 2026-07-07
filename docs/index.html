@@ -73,13 +73,11 @@
   }
   .break.on { opacity: 1; pointer-events: auto; }
   .dogbox {
-    position: absolute; left: 50%; bottom: -3%;
-    height: 74%; aspect-ratio: 900 / 944;
+    position: absolute; left: 50%; bottom: 5%;
+    height: 62%; aspect-ratio: 900 / 944;
     transform: translateX(-50%) translateY(30px); opacity: 0;
     transition: opacity 0.9s ease, transform 0.9s ease;
     filter: drop-shadow(0 14px 30px rgba(0,0,0,0.55));
-    -webkit-mask-image: linear-gradient(to bottom, #000 90%, transparent 100%);
-    mask-image: linear-gradient(to bottom, #000 90%, transparent 100%);
   }
   .break.on .dogbox { opacity: 1; transform: translateX(-50%) translateY(0); }
   .break.on .dogbox canvas { animation: dogbob 2.6s ease-in-out infinite; }

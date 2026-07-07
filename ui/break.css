@@ -38,14 +38,14 @@ body.no-cursor { cursor: none; }
 /* thought bubble hovering by the dog's head */
 #bubble {
   position: fixed;
-  left: 53%;
+  left: 54%;
   bottom: 62vh;
-  max-width: 470px;
-  min-width: 320px;
-  padding: 20px 24px 18px;
+  max-width: 360px;
+  min-width: 260px;
+  padding: 15px 18px 13px;
   background: rgba(15, 17, 24, 0.9);
   border: 1px solid rgba(224, 169, 78, 0.42);
-  border-radius: 20px;
+  border-radius: 16px;
   box-shadow: 0 14px 44px rgba(0, 0, 0, 0.45);
   opacity: 0;
   transform: translateY(10px) scale(0.94);
@@ -60,16 +60,16 @@ body.no-cursor { cursor: none; }
   border: 1px solid rgba(224, 169, 78, 0.42);
   border-radius: 50%;
 }
-.dot-big { width: 18px; height: 18px; left: 22px; bottom: -28px; }
-.dot-small { width: 10px; height: 10px; left: 8px; bottom: -48px; }
+.dot-big { width: 15px; height: 15px; left: 20px; bottom: -24px; }
+.dot-small { width: 9px; height: 9px; left: 8px; bottom: -42px; }
 
 #msg {
   font-family: Georgia, "Palatino Linotype", serif;
   font-weight: 500;
-  font-size: clamp(19px, 1.8vw, 27px);
-  line-height: 1.35;
+  font-size: clamp(16px, 1.5vw, 21px);
+  line-height: 1.32;
   letter-spacing: 0.01em;
-  min-height: 2.7em;
+  min-height: 2.6em;
 }
 
 #sub {
@@ -83,14 +83,14 @@ body.no-cursor { cursor: none; }
 #bubble-row {
   display: flex;
   align-items: center;
-  gap: 18px;
-  margin-top: 12px;
+  gap: 14px;
+  margin-top: 10px;
 }
 
 #ringwrap {
   position: relative;
-  width: 86px;
-  height: 86px;
+  width: 64px;
+  height: 64px;
   flex: none;
 }
 
@@ -113,7 +113,7 @@ body.no-cursor { cursor: none; }
   inset: 0;
   display: grid;
   place-items: center;
-  font-size: 24px;
+  font-size: 19px;
   font-weight: 600;
   font-variant-numeric: tabular-nums;
 }
@@ -194,9 +194,6 @@ body.no-cursor { cursor: none; }
   transform-origin: 50% 100%;
   transition: opacity 0.9s ease, transform 0.9s ease;
   filter: drop-shadow(0 18px 40px rgba(0, 0, 0, 0.55));
-  /* the clip is a full-body sitting portrait; fade the cut edges out softly */
-  -webkit-mask-image: linear-gradient(to bottom, black 90%, transparent 100%);
-  mask-image: linear-gradient(to bottom, black 90%, transparent 100%);
 }
 /* after sliding in, a gentle bob keeps the dog feeling alive */
 #scene.video-dog.dog-in {

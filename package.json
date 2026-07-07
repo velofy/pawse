@@ -1,6 +1,6 @@
 {
   "name": "pawse",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "private": true,
   "description": "A pomeranian that makes you take breaks. Lightweight, open source, no network access.",
   "scripts": {

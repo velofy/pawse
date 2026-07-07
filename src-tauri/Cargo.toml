@@ -1,6 +1,6 @@
 [package]
 name = "pawse"
-version = "0.2.1"
+version = "0.2.2"
 description = "A pomeranian that makes you take breaks."
 authors = ["Anish"]
 license = "MIT"

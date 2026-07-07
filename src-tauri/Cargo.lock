@@ -2402,7 +2402,7 @@ dependencies = [
 
 [[package]]
 name = "pawse"
-version = "0.2.1"
+version = "0.2.2"
 dependencies = [
  "chrono",
  "objc2 0.5.2",
