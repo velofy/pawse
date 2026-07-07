@@ -194,10 +194,10 @@ async function main() {
   requestAnimationFrame(() => document.body.classList.add('shown'));
 
   if (!info.primary) {
+    // Secondary monitors get only the dim, no bubble, so there is exactly one
+    // message on screen (on the primary) rather than a popup per display.
     document.body.classList.add('secondary');
-    $('bubble').classList.add('show');
-    $('msg').textContent = 'Break in progress, look away from the screen 🐾';
-    $('sub').textContent = '';
+    $('bubble').remove();
     $('scene').remove();
     return;
   }

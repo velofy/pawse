@@ -160,9 +160,10 @@ fn raise_above_everything(win: &tauri::WebviewWindow) {
             unsafe {
                 // kCGScreenSaverWindowLevel: above the menu bar and the Dock.
                 let _: () = msg_send![ns, setLevel: 1000isize];
-                // canJoinAllSpaces (1) | fullScreenAuxiliary (1 << 8): also
-                // covers apps that are in native fullscreen spaces.
-                let _: () = msg_send![ns, setCollectionBehavior: 257usize];
+                // fullScreenAuxiliary (1 << 8) only: cover fullscreen apps too, but
+                // WITHOUT canJoinAllSpaces, which was pulling every break window onto
+                // the active display instead of leaving one per monitor.
+                let _: () = msg_send![ns, setCollectionBehavior: 256usize];
             }
         }
     }
@@ -183,45 +184,49 @@ fn start_break(app: &AppHandle) {
         *state.current_message.lock().unwrap() = msg;
     }
 
-    let mut monitors = app.available_monitors().unwrap_or_default();
-    if monitors.is_empty() {
-        if let Ok(Some(primary)) = app.primary_monitor() {
-            monitors.push(primary);
-        }
-    }
-    if monitors.is_empty() {
-        state.in_break.store(false, Ordering::SeqCst);
-        return;
+    // Tuck the Control Panel away so it does not show through the translucent break.
+    if let Some(cp) = app.get_webview_window("settings") {
+        let _ = cp.hide();
     }
 
-    for (i, monitor) in monitors.iter().enumerate() {
-        let label = format!("break-{i}");
-        let built = WebviewWindowBuilder::new(app, &label, WebviewUrl::App("break.html".into()))
-            .title("Pawse")
-            .decorations(false)
-            .resizable(false)
-            .maximizable(false)
-            .minimizable(false)
-            .closable(false)
-            .always_on_top(true)
-            .skip_taskbar(true)
-            .shadow(false)
-            .transparent(true)
-            .focused(i == 0)
-            .build();
-        match built {
-            Ok(win) => {
-                let _ = win.set_position(tauri::Position::Physical(*monitor.position()));
-                let _ = win.set_size(tauri::Size::Physical(*monitor.size()));
-                let _ = win.set_visible_on_all_workspaces(true);
-                #[cfg(target_os = "macos")]
-                raise_above_everything(&win);
-                if i == 0 {
-                    let _ = win.set_focus();
-                }
-            }
-            Err(e) => eprintln!("pawse: failed to create break window {label}: {e}"),
+    // Take over the primary display only. One window is rock solid; covering every
+    // monitor was spawning stray/black overlays and stacked bubbles on secondary
+    // screens. (Multi-monitor coverage can return once it is verified on real hardware.)
+    let monitor = app
+        .primary_monitor()
+        .ok()
+        .flatten()
+        .or_else(|| app.available_monitors().ok().and_then(|v| v.into_iter().next()));
+    let monitor = match monitor {
+        Some(m) => m,
+        None => {
+            state.in_break.store(false, Ordering::SeqCst);
+            return;
         }
+    };
+
+    let built = WebviewWindowBuilder::new(app, "break-0", WebviewUrl::App("break.html".into()))
+        .title("Pawse")
+        .decorations(false)
+        .resizable(false)
+        .maximizable(false)
+        .minimizable(false)
+        .closable(false)
+        .always_on_top(true)
+        .skip_taskbar(true)
+        .shadow(false)
+        .transparent(true)
+        .focused(true)
+        .build();
+    match built {
+        Ok(win) => {
+            let _ = win.set_position(tauri::Position::Physical(*monitor.position()));
+            let _ = win.set_size(tauri::Size::Physical(*monitor.size()));
+            #[cfg(target_os = "macos")]
+            raise_above_everything(&win);
+            let _ = win.set_focus();
+        }
+        Err(e) => eprintln!("pawse: failed to create break window: {e}"),
     }
 }
 
@@ -236,6 +241,10 @@ fn end_break(app: &AppHandle, mood: &str) {
         if label.starts_with("break-") {
             let _ = win.destroy();
         }
+    }
+    // Bring the Control Panel back if it was open before the break.
+    if let Some(cp) = app.get_webview_window("settings") {
+        let _ = cp.show();
     }
     reschedule(app);
 }

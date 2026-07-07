@@ -311,17 +311,20 @@
     <div class="installgrid">
       <div class="method">
         <h3>macOS</h3>
-        <p>Homebrew, or grab the DMG. Unsigned build: first launch is right-click, then Open.</p>
+        <p>Homebrew is the no-fuss path (Intel and Apple Silicon). It clears the download
+           quarantine for you, so you never see a warning.</p>
         <pre>brew tap anishfyi/tap
 brew install --cask pawse</pre>
-        <a class="dl" href="https://github.com/anishfyi/pawse/releases">or download the .dmg</a>
+        <p>Prefer the <a class="dl" href="https://github.com/anishfyi/pawse/releases/latest">universal DMG</a>?
+           If macOS says <em>"damaged"</em> (it means unsigned, not broken), run once:</p>
+        <pre>xattr -cr /Applications/Pawse.app</pre>
       </div>
       <div class="method">
         <h3>Windows</h3>
         <p>Download the installer and run it. If SmartScreen objects: More info, then Run anyway.</p>
         <pre># from the releases page
 Pawse_x.y.z_x64-setup.exe</pre>
-        <a class="dl" href="https://github.com/anishfyi/pawse/releases">go to releases</a>
+        <a class="dl" href="https://github.com/anishfyi/pawse/releases/latest">go to releases</a>
       </div>
     </div>
   </section>

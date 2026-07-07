@@ -37,15 +37,42 @@ not fight OS-level force-quit, it's a break reminder, not a jail.
 
 ## Install
 
-Grab the latest build from **[Releases](../../releases)**:
+**macOS, the easy way (no warnings):** Homebrew strips the download quarantine for you, so it just works.
 
-| Platform | File | Note |
-|---|---|---|
-| macOS | `Pawse_x.y.z_universal.dmg` | Unsigned build: first launch is right-click → **Open** |
-| Windows | `Pawse_x.y.z_x64-setup.exe` | If SmartScreen appears: **More info → Run anyway** |
+```sh
+brew tap anishfyi/tap
+brew install --cask pawse
+```
+
+**Or download directly** from **[Releases](../../releases/latest)**:
+
+| Platform | File |
+|---|---|
+| macOS (Intel + Apple Silicon) | `Pawse_x.y.z_universal.dmg` |
+| Windows | `Pawse_x.y.z_x64-setup.exe` |
+
+The downloads are **not signed with a paid developer certificate**, so the OS shows a
+warning on first launch. This is expected, not a virus.
+
+### macOS says *"Pawse is damaged and can't be opened"*
+
+This is macOS Gatekeeper reacting to the download quarantine on an unsigned app, not
+actual damage. Any one of these fixes it:
+
+- **Best:** install via Homebrew (above) — it never happens.
+- Or, after dragging Pawse to Applications, run once in Terminal:
+  ```sh
+  xattr -cr /Applications/Pawse.app
+  ```
+  then open it normally.
+- Or: System Settings → Privacy & Security → scroll down → **Open Anyway**.
+
+### Windows says *"Windows protected your PC"*
+
+Click **More info → Run anyway**.
 
 Pawse lives in your menu bar / system tray: take a break now, pause for an hour,
-open settings, or quit.
+open the Control Panel, or quit.
 
 ## Customize
 
