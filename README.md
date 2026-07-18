@@ -59,7 +59,7 @@ warning on first launch. This is expected, not a virus.
 This is macOS Gatekeeper reacting to the download quarantine on an unsigned app, not
 actual damage. Any one of these fixes it:
 
-- **Best:** install via Homebrew (above) — it never happens.
+- **Best:** install via Homebrew (above): it never happens.
 - Or, after dragging Pawse to Applications, run once in Terminal:
   ```sh
   xattr -cr /Applications/Pawse.app
