@@ -2,6 +2,11 @@
 
 **The pomeranian that makes you take breaks.**
 
+Docs: **https://velofy.co/pawse/**
+
+[![Release](https://img.shields.io/github/v/release/velofy/pawse)](https://github.com/velofy/pawse/releases/latest)
+[![License: MIT](https://img.shields.io/github/license/velofy/pawse)](LICENSE)
+
 Every so often (you decide when), a fluffy pomeranian takes over your
 screen, tells you to take a walk and drink some water, counts down 30 seconds,
 asks if you're happy, and leaves. That's it. That's the app.
@@ -16,12 +21,12 @@ screen? See [Put your own dog in Pawse](#put-your-own-dog-in-pawse).
   no accounts, no analytics. Settings and mood logs live only on your device.
 - 🎨 **Highly customizable**, interval or fixed daily times, break length, the messages
   the dog says, sound, coat color, dog name, hard mode, launch at login
-- 🖥️ **Cross-platform**, macOS (`.dmg`) and Windows (`.exe`), covers every monitor
+- 🖥️ **Cross-platform**, macOS (`.dmg`) and Windows (`.exe`), takes over the primary display
 - 🧡 **Open source**, MIT
 
 ## How a break works
 
-1. At your chosen time, **Biscuit** (rename him!) trots onto every screen.
+1. At your chosen time, **Biscuit** (rename him!) trots onto your primary screen.
 2. The screen is blocked for 30 s (configurable): *"Woof! Time to stretch those legs,
    take a little walk. 🐾"* A countdown ring ticks down while the dog sits, pants,
    blinks, and wags.
@@ -40,16 +45,14 @@ not fight OS-level force-quit, it's a break reminder, not a jail.
 **macOS, the easy way (no warnings):** Homebrew strips the download quarantine for you, so it just works.
 
 ```sh
-brew tap anishfyi/tap
+brew tap velofy/tap
 brew install --cask pawse
 ```
 
-**Or download directly** from **[Releases](../../releases/latest)**:
+**Or download directly** from **[Releases](https://github.com/velofy/pawse/releases/latest)**:
 
-| Platform | File |
-|---|---|
-| macOS (Intel + Apple Silicon) | `Pawse_x.y.z_universal.dmg` |
-| Windows | `Pawse_x.y.z_x64-setup.exe` |
+- macOS (Intel + Apple Silicon): `Pawse_x.y.z_universal.dmg`
+- Windows: `Pawse_x.y.z_x64-setup.exe`
 
 The downloads are **not signed with a paid developer certificate**, so the OS shows a
 warning on first launch. This is expected, not a virus.
@@ -74,21 +77,32 @@ Click **More info → Run anyway**.
 Pawse lives in your menu bar / system tray: take a break now, pause for an hour,
 open the Control Panel, or quit.
 
+## Documentation
+
+Full docs live at **https://velofy.co/pawse/**:
+
+- [Installation](https://velofy.co/pawse/installation/)
+- [First run](https://velofy.co/pawse/first-run/)
+- [Using Pawse](https://velofy.co/pawse/using-pawse/)
+- [Configuration](https://velofy.co/pawse/configuration/)
+- [Custom dog](https://velofy.co/pawse/custom-dog/)
+- [Privacy](https://velofy.co/pawse/privacy/)
+- [Troubleshooting](https://velofy.co/pawse/troubleshooting/)
+- [Changelog](https://velofy.co/pawse/changelog/)
+
 ## Customize
 
 Open **Settings** from the tray icon:
 
-| Setting | Default | Meaning |
-|---|---|---|
-| Break every | 45 min | Interval between breaks |
-| Fixed times | (none) | e.g. `10:30`, `15:00`, when set, these replace the interval |
-| Break length | 30 s | The countdown |
-| Messages | 3 built-ins | One per line; the dog rotates through them |
-| Emergency escape | on | Hold ESC to skip; turn off for hard mode |
-| Sound | on | Soft synthesized chime + woof (no audio files) |
-| Dog name / coat | Biscuit / golden | Coat colors apply to the 3D dog |
-| Dog style | Auto | Real (video) when clips exist, or the procedural 3D dog |
-| Launch at login | off | Start Pawse with your computer |
+- **Break every** (default 45 min): interval between breaks
+- **Fixed times** (default none): e.g. `10:30`, `15:00`; when set, these replace the interval
+- **Break length** (default 30 s): the countdown
+- **Messages** (3 built-ins): one per line; the dog rotates through them
+- **Emergency escape** (on): hold ESC to skip; turn off for hard mode
+- **Sound** (on): soft synthesized chime and woof, no audio files
+- **Dog name / coat** (Biscuit / golden): coat colors apply to the 3D dog
+- **Dog style** (Auto): real video when clips exist, or the procedural 3D dog
+- **Launch at login** (off): start Pawse with your computer
 
 Settings are plain JSON at:
 
@@ -97,7 +111,7 @@ Settings are plain JSON at:
 
 ## Build from source
 
-Prereqs: [Rust](https://rustup.rs), Node 20+.
+Prereqs: [Rust](https://rustup.rs), Node 20+, and the [Tauri prerequisites](https://v2.tauri.app/start/prerequisites/) for your OS.
 
 ```sh
 npm install
@@ -132,6 +146,10 @@ The fallback/alternative dog is built procedurally from three.js primitives
 (`ui/dog.js`), spheres, capsules, and a chained-segment tail. No model files, and
 every part of the dog (coat color, wag speed, ear droop, blink timing) is one line
 of code away from being yours.
+
+## Contributing
+
+Issues and pull requests are welcome. Run `cargo test --manifest-path src-tauri/Cargo.toml` before sending a change. Developer notes are in `docs/superpowers/`.
 
 ## License
 
