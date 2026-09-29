@@ -3,6 +3,12 @@
   "version": "0.2.5",
   "private": true,
   "description": "A pomeranian that makes you take breaks. Lightweight, open source, no network access.",
+  "homepage": "https://velofy.co/pawse/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/velofy/pawse.git"
+  },
+  "license": "MIT",
   "scripts": {
     "tauri": "tauri",
     "dev": "tauri dev",

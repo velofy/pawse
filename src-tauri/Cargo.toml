@@ -4,6 +4,9 @@ version = "0.2.5"
 description = "A pomeranian that makes you take breaks."
 authors = ["Anish"]
 license = "MIT"
+homepage = "https://velofy.co/pawse/"
+documentation = "https://velofy.co/pawse/"
+repository = "https://github.com/velofy/pawse"
 edition = "2021"
 
 [build-dependencies]
