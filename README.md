@@ -1,3 +1,10 @@
+<p align="center">
+  <a href="https://velofy.co/pawse/"><picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/velofy/pawse/main/assets/tile-dark.svg">
+    <img alt="Pawse" src="https://raw.githubusercontent.com/velofy/pawse/main/assets/tile-light.svg" width="360">
+  </picture></a>
+</p>
+
 # Pawse 🐕
 
 **The pomeranian that makes you take breaks.**
